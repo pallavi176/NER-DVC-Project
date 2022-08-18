@@ -1,0 +1,7 @@
+[2022-08-18 15:33:43,362: INFO: data_ingestion]: 
+********************
+[2022-08-18 15:33:43,363: INFO: data_ingestion]: >>>>> stage Data Ingestion stage started <<<<<
+[2022-08-18 15:33:43,372: INFO: common]: yaml file: configs/config.yaml loaded successfully
+[2022-08-18 15:36:46,854: INFO: data_ingestion]: dataset downloaded at: artifacts\cache_dir
+[2022-08-18 15:36:46,856: INFO: data_ingestion]: >>>>> stage Data Ingestion stage completed!<<<<<
+
