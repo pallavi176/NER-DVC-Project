@@ -1,5 +1,5 @@
 # Project information
-site_name: REPO_NAME_OR_SITE_NAME
+site_name: NER-DVC-Project
 # defeine TOC or order of website-
 nav:
   - Home: index.md
@@ -9,8 +9,8 @@ site_description: >-
   DESCRIPTION
 
 # Repository
-repo_name: pallavi176/REPO_NAME
-repo_url: https://github.dev/pallavi176/REPO_NAME
+repo_name: pallavi176/NER-DVC-Project
+repo_url: https://github.dev/pallavi176/NER-DVC-Project
 
 # Configuration
 theme:
