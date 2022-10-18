@@ -32,3 +32,6 @@ dvc init
 ```
 
 ### STEP 06- commit and push the changes to the remote repository
+
+git rm -r --cached 'logs\running_logs.log'
+git rm -r --cached 'artifacts\'
