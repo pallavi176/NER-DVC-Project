@@ -1,4 +1,4 @@
-# dvc-project-template
+# NER-dvc-project
 NER-DVC-Project
 
 ## STEPS -

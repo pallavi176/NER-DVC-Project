@@ -3,6 +3,7 @@ site_name: NER-DVC-Project
 # defeine TOC or order of website-
 nav:
   - Home: index.md
+  - Data-injestion: data-ingestion.md
 
 site_author: Pallavi Saxena
 site_description: >-
