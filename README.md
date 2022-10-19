@@ -35,3 +35,5 @@ dvc init
 
 git rm -r --cached 'logs\running_logs.log'
 git rm -r --cached 'artifacts\'
+
+pip install ipykernel
