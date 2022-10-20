@@ -3,6 +3,7 @@
 artifacts: 
   artifacts_dir: artifacts
   cache_dir: cache_dir
+  model_weight: model_weight
 
 dataset: 
   name: xtreme
