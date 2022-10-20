@@ -5,10 +5,17 @@ pandas
 numpy
 PyYAML
 mkdocs-material
-datasets
-transformers[sentencepiece]
+#datasets
+#transformers[sentencepiece]
 folium==0.2.1
 tensorflow
+transformers[tf,torch,sentencepiece,vision,optuna,sklearn,onnxruntime]==4.11.3
+uvicorn[standard]
+seqeval==1.2.2
+from-root==1.0.2
+fastapi==0.78.0
+accelerate==0.5.1
+datasets==1.13.0
 
 ### local packages -
 -e . # << uncomment this to install from setup.py
