@@ -6,7 +6,7 @@ with open("README.md", "r", encoding="utf-8") as f:
 ## edit below variables as per your requirements -
 REPO_NAME = "NER-DVC-Project"
 AUTHOR_USER_NAME = "pallavi176"
-SRC_REPO = "src"
+SRC_REPO = "ner"
 LIST_OF_REQUIREMENTS = []
 
 
