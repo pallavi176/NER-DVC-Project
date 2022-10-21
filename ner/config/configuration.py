@@ -27,7 +27,7 @@ class Configuration:
 
             data_store = os.path.join(from_root(), self.config[PATH_KEY][ARTIFACTS_KEY],
                                       self.config[PATH_KEY][DATA_STORE_KEY])
-
+            create_directories([data_store])
             data_ingestion_config = DataIngestionConfig(
                 dataset_name=dataset_name,
                 subset_name=subset_name,
