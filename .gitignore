@@ -142,3 +142,6 @@ configs/secrets.yaml
 
 
 artifacts/
+research_env/xlm-roberta-base-finetuned-panx-en/runs/Oct21_17-09-44_AV-4M98DK3/events.out.tfevents.1666352431.AV-4M98DK3.23056.0
+
+research_env/xlm-roberta-base-finetuned-panx-en/runs/Oct21_17-09-44_AV-4M98DK3/1666352431.1238308/events.out.tfevents.1666352431.AV-4M98DK3.23056.1
