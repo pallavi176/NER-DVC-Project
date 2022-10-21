@@ -3,7 +3,8 @@ import sys
 import logging
 from from_root import from_root
 from transformers import AutoTokenizer, AutoConfig
-from ner.entity.config_entity import DataIngestionConfig, DataValidationConfig, DataPreprocessingConfig
+from ner.entity.config_entity import (DataIngestionConfig, DataValidationConfig, 
+DataPreprocessingConfig, ModelTrainConfig)
 from ner.utils.common import read_config, create_directories
 from ner.exception.exception import CustomException
 from ner.constants import *
@@ -81,6 +82,44 @@ class Configuration:
                 tokenizer=tokenizer
             )
             return data_preprocessing_config
+        except Exception as e:
+            logger.exception(e)
+            raise CustomException(e, sys)
+
+    def get_model_train_pipeline_config(self) -> ModelTrainConfig:
+        try:
+            model_name = self.params[BASE_MODEL_CONFIG][BASE_MODEL_NAME]
+            tokenizer = AutoTokenizer.from_pretrained(self.params[BASE_MODEL_CONFIG][BASE_MODEL_NAME])
+
+            tags = self.params[DATA_PREPROCESSING_KEY][NER_TAGS_KEY]
+
+            index2tag = {idx: tag for idx, tag in enumerate(tags)}
+            tag2index = {idx: tag for idx, tag in enumerate(tags)}
+
+            xlmr_config = AutoConfig.from_pretrained(self.params[BASE_MODEL_CONFIG][BASE_MODEL_NAME],
+                                                     num_labels=self.params[BASE_MODEL_CONFIG][NUM_CLASSES],
+                                                     id2label=index2tag,
+                                                     label2id=tag2index)
+
+            epochs = self.params[BASE_MODEL_CONFIG][NUM_EPOCHS]
+            batch_size = self.params[BASE_MODEL_CONFIG][BATCH_SIZE]
+            save_steps = self.params[BASE_MODEL_CONFIG][SAVE_STEPS]
+
+            output_dir = os.path.join(from_root(), ARTIFACTS_KEY, MODEL_WEIGHT_KEY)
+
+            model_train_config = ModelTrainConfig(
+                model_name=model_name,
+                index2tag=index2tag,
+                tag2index=tag2index,
+                tokenizer=tokenizer,
+                xlmr_config=xlmr_config,
+                epochs=epochs,
+                batch_size=batch_size,
+                save_steps=save_steps,
+                output_dir=output_dir
+            )
+
+            return model_train_config
         except Exception as e:
             logger.exception(e)
             raise CustomException(e, sys)
