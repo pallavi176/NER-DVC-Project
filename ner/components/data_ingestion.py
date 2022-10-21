@@ -1,50 +1,36 @@
-import argparse
-import os
+import sys
 import logging
-from src.NER_utils import read_yaml, create_directories
 from datasets import load_dataset
+from ner.entity.config_entity import DataIngestionConfig
+from ner.config.configuration import Configuration
+from ner.exception.exception import CustomException
 
-STAGE = "Data Ingestion stage" ## <<< change stage name 
-
-logging.basicConfig(
-    filename=os.path.join("logs", 'running_logs.log'), 
-    level=logging.INFO, 
-    format="[%(asctime)s: %(levelname)s: %(module)s]: %(message)s",
-    filemode="a"
-    )
+logger = logging.getLogger(__name__)
 
 class DataIngestion:
-    def __init__(self, config):
-        self.config = config
-        self.dataset_name = config["dataset"]["name"]
-        self.subset = config["dataset"]["subset"]
-        self.cache_dir = os.path.join(
-            config["artifacts"]["artifacts_dir"],
-            config["artifacts"]["cache_dir"]
-            )
+    def __init__(self, data_ingestion_config: DataIngestionConfig):
+        logger.info(" Data Ingestion Log Started ")
+        self.data_ingestion_config = data_ingestion_config
 
     def get_data(self):
-        en_data = load_dataset(self.dataset_name, self.subset, cache_dir=self.cache_dir )
-        logging.info(f"dataset downloaded at: {self.cache_dir}")
+        try:
+            """
+            This is class is responsible for data collection from official hugging face library.
+            Cross-lingual Transfer Evaluation of Multilingual Encoders 
+            (XTREME) benchmark called WikiANN or PAN-X.
+            
+            Returns: Dict of train test validation data 
+            """
+            logger.info(f"Loading Data from Hugging face ")
+            pan_en_data = load_dataset(self.data_ingestion_config.dataset_name,
+                                       name=self.data_ingestion_config.subset_name)
+            logger.info(f"Dataset Info : {pan_en_data}")
+            return pan_en_data
+        except Exception as e:
+            message = CustomException(e, sys)
+            logger.error(message.error_message)
 
-
-def main(config_path):
-    ## read config files
-    config = read_yaml(config_path)
-    data_ingestion = DataIngestion(config)
-    data_ingestion.get_data()
-
-
-if __name__ == '__main__':
-    args = argparse.ArgumentParser()
-    args.add_argument("--config", "-c", default="configs/config.yaml")
-    parsed_args = args.parse_args()
-
-    try:
-        logging.info("\n********************")
-        logging.info(f">>>>> stage {STAGE} started <<<<<")
-        main(config_path=parsed_args.config)
-        logging.info(f">>>>> stage {STAGE} completed!<<<<<\n")
-    except Exception as e:
-        logging.exception(e)
-        raise e
+if __name__ == "__main__":
+    project_config = Configuration()
+    ingestion = DataIngestion(project_config.get_data_ingestion_config())
+    print(ingestion)
