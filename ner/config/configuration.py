@@ -3,19 +3,19 @@ import sys
 import logging
 from from_root import from_root
 from ner.entity.config_entity import DataIngestionConfig
-from ner.utils.common import read_config
+from ner.utils.common import read_config, create_directories
 from ner.exception.exception import CustomException
 from ner.constants import *
 
-
 logger = logging.getLogger(__name__)
 
-
 class Configuration:
-    def __init__(self):
+    def __init__(self, config_filepath=CONFIG_FILE_PATH, params_filepath=PARAMS_FILE_PATH):
         try:
             logger.info("Reading Config file")
-            self.config = read_config(file_name=CONFIG_FILE_NAME)
+            self.config = read_config(file_name=config_filepath)
+            self.params = read_config(file_name=params_filepath)
+            create_directories([self.config[PATH_KEY][ARTIFACTS_KEY]])
         except Exception as e:
             logger.exception(e)
             raise CustomException(e, sys)

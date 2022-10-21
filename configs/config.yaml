@@ -1,18 +1,12 @@
 # It contains all the configs required in the project
 
-artifacts: 
-  artifacts_dir: artifacts
-  cache_dir: cache_dir
+paths:
+  artifacts: artifacts
+  data_store: data
+  logs: logs
   model_weight: model_weight
+  serialized_objects: serialized_objects
 
-dataset: 
-  name: xtreme
-  subset: PAN-X.en
-
-source_download_dirs:
-  - path_to_data_1
-  - path_to_data_1
-
-local_data_dirs:
-  - path_to_local_data_1
-  - path_to_local_data_2
+data_ingestion_config:
+  dataset_name: xtreme
+  subset_name: PAN-X.en

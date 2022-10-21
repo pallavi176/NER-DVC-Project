@@ -1,4 +1,6 @@
-CONFIG_FILE_NAME = "config.yaml"
+CONFIG_FILE_PATH = "configs/config.yaml"
+PARAMS_FILE_PATH = "params.yaml"
+SECRETS_FILE_PATH = "secrets.yaml"
 
 PATH_KEY = "paths"
 DATA_STORE_KEY = "data_store"
