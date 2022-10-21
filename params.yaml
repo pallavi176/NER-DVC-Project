@@ -8,8 +8,10 @@ Data_preprocessing:
     - I-ORG
     - B-LOC
     - I-LOC
-    
-train_params:
-  model_name: xlm-roberta-base
-  epochs: 1
-  batch_size: 512
+
+Base_model_config:
+  base_model_name: xlm-roberta-base
+  num_classes : 7
+  num_epochs: 1
+  batch_size: 16
+  save_steps: 100000

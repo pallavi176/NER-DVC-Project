@@ -20,3 +20,13 @@ COLUMNS_CHECK = "columns_check"
 TYPE_CHECK = "type_check"
 NULL_CHECK = "null_check"
 
+DATA_PREPROCESSING_KEY = "Data_preprocessing"
+NER_TAGS_KEY = "ner_tags"
+
+BASE_MODEL_CONFIG = "Base_model_config"
+BASE_MODEL_NAME = "base_model_name"
+NUM_CLASSES = "num_classes"
+NUM_EPOCHS = "num_epochs"
+BATCH_SIZE = "batch_size"
+SAVE_STEPS = "save_steps"
+
