@@ -14,4 +14,9 @@ DATASET_NAME = "dataset_name"
 SUBSET_NAME = "subset_name"
 DATA_STORE_PATH = None
 
+DATA_VALIDATION_KEY = "data_validation_config"
+DATA_SPLIT = "data_split"
+COLUMNS_CHECK = "columns_check"
+TYPE_CHECK = "type_check"
+NULL_CHECK = "null_check"
 

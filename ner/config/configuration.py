@@ -2,7 +2,7 @@ import os
 import sys
 import logging
 from from_root import from_root
-from ner.entity.config_entity import DataIngestionConfig
+from ner.entity.config_entity import DataIngestionConfig, DataValidationConfig
 from ner.utils.common import read_config, create_directories
 from ner.exception.exception import CustomException
 from ner.constants import *
@@ -34,6 +34,30 @@ class Configuration:
                 data_path=data_store
             )
             return data_ingestion_config
+        except Exception as e:
+            logger.exception(e)
+            raise CustomException(e, sys)
+
+    def get_data_validation_config(self) -> DataValidationConfig:
+        try:
+
+            # Load data from the disk location artifacts store
+            # os.path.join(from_root(),-- path to the data_store)
+
+            split = self.config[DATA_VALIDATION_KEY][DATA_SPLIT]
+            columns = self.config[DATA_VALIDATION_KEY][COLUMNS_CHECK]
+
+            null_value_check = self.config[DATA_VALIDATION_KEY][TYPE_CHECK]
+            type_check = self.config[DATA_VALIDATION_KEY][NULL_CHECK]
+
+            data_validation_config = DataValidationConfig(
+                dataset=None,
+                data_split=split,
+                columns_check=columns,
+                type_check=type_check,
+                null_check=null_value_check
+            )
+            return data_validation_config
         except Exception as e:
             logger.exception(e)
             raise CustomException(e, sys)

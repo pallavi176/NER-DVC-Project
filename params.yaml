@@ -1,4 +1,14 @@
 # This contains params to be used by the stages to train or predict
+Data_preprocessing:
+  ner_tags:
+    - O
+    - B-PER
+    - I-PER
+    - B-ORG
+    - I-ORG
+    - B-LOC
+    - I-LOC
+    
 train_params:
   model_name: xlm-roberta-base
   epochs: 1

@@ -10,3 +10,18 @@ paths:
 data_ingestion_config:
   dataset_name: xtreme
   subset_name: PAN-X.en
+
+data_validation_config:
+  data_split:
+    - train
+    - test
+    - validation
+
+  type_check:
+
+  null_check:
+
+  columns_check:
+    - tokens
+    - ner_tags
+    - langs
