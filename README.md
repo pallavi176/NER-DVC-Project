@@ -37,3 +37,17 @@ git rm -r --cached 'logs\running_logs.log'
 git rm -r --cached 'artifacts\'
 
 pip install ipykernel
+
+To run train pipeline
+```python
+python ner/pipeline/train_pipeline.py
+```
+To run inferencing
+```python
+python app.py
+```
+
+To launch swagger ui
+```python
+http://localhost:8085/docs
+```
