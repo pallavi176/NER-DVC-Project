@@ -30,3 +30,7 @@ NUM_EPOCHS = "num_epochs"
 BATCH_SIZE = "batch_size"
 SAVE_STEPS = "save_steps"
 
+PREDICT_MODEL_CONFIG = "Predict_model_config"
+TRUNCATION = "truncation"
+IS_SPLIT_INTO_WORDS = "is_split_into_words"
+
