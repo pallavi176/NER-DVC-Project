@@ -42,12 +42,19 @@ To run train pipeline
 ```python
 python ner/pipeline/train_pipeline.py
 ```
+
 To run inferencing
 ```python
 python app.py
+```
+
+To launch app locally
+```python
+http://localhost:8085/
 ```
 
 To launch swagger ui
 ```python
 http://localhost:8085/docs
 ```
+
